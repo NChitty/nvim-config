@@ -92,5 +92,22 @@ vim.keymap.set("x", "<leader>p", "p")
 -- Normal character delete does not save values
 vim.keymap.set("n", "x", [["_x"]])
 
--- Special character delete saves values
-vim.keymap.set("n", "<leader>x", "x")
+-------------
+-- LSP Remaps
+-------------
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('NChitty', {}),
+    callback = function(ev)
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
+        vim.keymap.set({'n', 'i'}, '<C-h>', vim.lsp.buf.signature_help, opts)
+    end,
+})
