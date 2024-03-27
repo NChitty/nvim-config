@@ -95,6 +95,9 @@ vim.keymap.set("n", "x", [["_x"]])
 -------------
 -- LSP Remaps
 -------------
+vim.keymap.set('n', '<leader>ne', vim.diagnostic.goto_next, { desc = 'Go to [N]ext [E]rror message' })
+vim.keymap.set('n', '<leader>pe', vim.diagnostic.goto_prev, { desc = 'Go to [P]revious [E]rror message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('NChitty', {}),
@@ -110,4 +113,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
         vim.keymap.set({'n', 'i'}, '<C-h>', vim.lsp.buf.signature_help, opts)
     end,
+})
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
