@@ -9,7 +9,6 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'neovim/nvim-lspconfig',
       'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
@@ -34,6 +33,20 @@ return {
             })
           end,
           -- Next, you can provide targeted overrides for specific servers.
+          ['lua_ls'] = function ()
+            local lspconfig = require('lspconfig')
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            lspconfig.lua_ls.setup({
+              capabilities = capabilities,
+              settings = {
+                Lua = {
+                  diagnostics = {
+                    globals = { 'vim' }
+                  }
+                }
+              }
+            })
+          end,
           ['rust_analyzer'] = function()
             local lspconfig = require('lspconfig')
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
