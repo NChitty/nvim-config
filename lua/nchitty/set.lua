@@ -12,6 +12,9 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.opt.wrap = false
 
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
