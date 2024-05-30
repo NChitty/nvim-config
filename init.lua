@@ -1,4 +1,11 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
-require("nchitty")
+-- [[ Setting options ]]
+require 'options'
+
+-- [[ Basic Keymaps ]]
+require 'keymaps'
+
+-- [[ Install `lazy.nvim` plugin manager ]]
+require 'lazy-bootstrap'

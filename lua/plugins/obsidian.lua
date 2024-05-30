@@ -11,16 +11,20 @@ return {
                 name = 'personal',
                 path = '~/personal/vaults/personal',
             },
+            {
+                name = 'world',
+                path = '~/personal/vaults/world',
+            },
         },
         daily_notes = {
             folder = 'dailies',
             date_format = '%Y-%m-%d',
         },
+        new_notes_location = "current_dir",
+        preferred_link_style = "markdown",
         completion = {
             nvim_cmp = true,
             min_chars = 2,
-            new_notes_location = "current_dir",
-            preferred_link_style = "markdown",
         },
         mappings = {
             -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.

@@ -1,3 +1,6 @@
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 vim.keymap.set("n", "<leader>jf", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -5,11 +8,15 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
 
-vim.keymap.set("n", "<c-s>", vim.cmd.w)
 vim.keymap.set("n", "<leader>=", vim.lsp.buf.format)
 
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
 ---------------
--- Add new line 
+-- Add new line
 ---------------
 vim.keymap.set("n", "o", "o<ESC>")
 vim.keymap.set("n","<leader>o", "A<Enter>")
@@ -109,7 +116,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, opts)
         vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
-        vim.keymap.set({'n', 'i'}, '<C-h>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set({'n', 'i'}, '<C-s>', vim.lsp.buf.signature_help, opts)
     end,
 })
 
