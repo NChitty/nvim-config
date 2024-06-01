@@ -34,9 +34,9 @@ return {
             })
           end,
           -- Next, you can provide targeted overrides for specific servers.
-          ['lua_ls'] = require('lsp.lua_ls'),
-          ['rust_analyzer'] = require('lsp.rust_analyzer'),
-          ['jdtls'] = require('lsp.jdtls'),
+          ['lua_ls'] = require('plugins.lsp.lua_ls'),
+          ['rust_analyzer'] = require('plugins.lsp.rust_analyzer'),
+          ['jdtls'] = require('plugins.lsp.jdtls'),
         }
       })
 
