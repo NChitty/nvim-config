@@ -10,11 +10,7 @@ return {
             {
                 name = 'personal',
                 path = '~/personal/vaults/personal',
-            },
-            {
-                name = 'world',
-                path = '~/personal/vaults/world',
-            },
+            }
         },
         daily_notes = {
             folder = 'dailies',

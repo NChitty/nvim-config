@@ -18,7 +18,7 @@ return function()
   local path_to_config = path_to_jdtls .. '/config_linux'
   local lombok_path = path_to_jdtls .. '/lombok.jar'
 
-  local path_to_jar = path_to_jdtls .. '/plugins/org.eclipse.equinox.launcher_1.6.700.v20231214-2017.jar'
+  local path_to_jar = path_to_jdtls .. '/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar'
   lspconfig.jdtls.setup({
     capabilities = capabilities,
     flags = {
