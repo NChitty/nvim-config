@@ -2,7 +2,16 @@ return {
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'L3MON4D3/LuaSnip',
+      {
+        'L3MON4D3/LuaSnip',
+        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+        config = function(_, opts)
+          print(vim.g.lua_snippets_path)
+          require("luasnip").config.set_config(opts)
+          require("luasnip.loaders.from_lua").load()
+          require("luasnip.loaders.from_lua").lazy_load({ paths = vim.g.lua_snippets_path or "" })
+        end
+      },
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lsp',
@@ -14,7 +23,6 @@ return {
 
       cmp.setup({
         snippet = {
-          -- REQUIRED - you must specify a snippet engine
           expand = function(args)
             require('luasnip').lsp_expand(args.body)
           end,
@@ -27,11 +35,15 @@ return {
           ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
+          { name = "nvim_lsp" },
+          { name = "path" },
+          { name = "luasnip" },
+          { name = "nvim_lua" },
+          { name = "buffer" },
         }, {
+          { name = "luasnip" },
           { name = 'buffer' },
-        })
+        }),
       })
 
       -- Set configuration for specific filetype.
